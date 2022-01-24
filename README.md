@@ -25,7 +25,7 @@ The *@node-oauth/oauth2-server* module is framework-agnostic but there are sever
 
 ## Documentation
 
-[Documentation](https://oauth2-server.readthedocs.io) is hosted on Read the Docs.
+[Documentation](https://oauth2-server.readthedocs.io) is hosted on Read the Docs
 
 
 ## Examples
