@@ -1,4 +1,35 @@
+# Fork Info
 
+Sourced originally from [diegosucaria/node-oauth2-server](https://github.com/diegosucaria/node-oauth2-server) which was forked originally from 
+[oauthjs/node-oauth2-server](https://github.com/oauthjs/node-oauth2-server). This is a sort of forward-port of the idea applied to this fork of node-oauth server. Use an override in the package.json if updating from the previous package.
+
+# Previous Fork Info
+
+On this fork of oauth2-server I've modified the function prototypes to include an extra optional parameter: `expReqCtx`
+It is intended to pass the express request context to the internal model functions, which will allow for example to use a distributed logging solution.
+
+example of usage:
+
+
+call the module functions like this:
+```
+...
+oauth.token(request, response, null, null, req).then((token)=> {
+...
+oauth.authenticate(request, response,{scope: scopes}, null, req).then((token)=> {
+```
+
+then, in your model, add the extra `expReqCtx` parameter
+
+```
+...
+function getUser(username, password, req)
+...
+function verifyScope(token, scopes, req)
+...
+```
+
+I've added the req parameter to all the grant-types and all the functions in the model.
 # @node-oauth/oauth2-server
 
 Complete, compliant and well tested module for implementing an OAuth2 server in [Node.js](https://nodejs.org).
