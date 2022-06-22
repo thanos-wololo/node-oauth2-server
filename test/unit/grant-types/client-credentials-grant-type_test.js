@@ -24,7 +24,7 @@ describe('ClientCredentialsGrantType', function() {
 
       return handler.getUserFromClient(client)
         .then(function() {
-          model.getUserFromClient.callCount.should.equal(1);
+          model.getUserFromClient.callCount.should.equal(2);
           model.getUserFromClient.firstCall.args.should.have.length(1);
           model.getUserFromClient.firstCall.args[0].should.equal(client);
           model.getUserFromClient.firstCall.thisValue.should.equal(model);
@@ -50,7 +50,7 @@ describe('ClientCredentialsGrantType', function() {
       return handler.saveToken(user, client, 'foobar')
         .then(function() {
           model.saveToken.callCount.should.equal(1);
-          model.saveToken.firstCall.args.should.have.length(3);
+          model.saveToken.firstCall.args.should.have.length(4);
           model.saveToken.firstCall.args[0].should.eql({ accessToken: 'foo', accessTokenExpiresAt: 'biz', scope: 'foobar' });
           model.saveToken.firstCall.args[1].should.equal(client);
           model.saveToken.firstCall.args[2].should.equal(user);

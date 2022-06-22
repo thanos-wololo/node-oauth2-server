@@ -29,7 +29,7 @@ describe('AuthorizationCodeGrantType', function() {
       return handler.getAuthorizationCode(request, client)
         .then(function() {
           model.getAuthorizationCode.callCount.should.equal(1);
-          model.getAuthorizationCode.firstCall.args.should.have.length(1);
+          model.getAuthorizationCode.firstCall.args.should.have.length(2);
           model.getAuthorizationCode.firstCall.args[0].should.equal(12345);
           model.getAuthorizationCode.firstCall.thisValue.should.equal(model);
         })
@@ -50,7 +50,7 @@ describe('AuthorizationCodeGrantType', function() {
       return handler.revokeAuthorizationCode(authorizationCode)
         .then(function() {
           model.revokeAuthorizationCode.callCount.should.equal(1);
-          model.revokeAuthorizationCode.firstCall.args.should.have.length(1);
+          model.revokeAuthorizationCode.firstCall.args.should.have.length(2);
           model.revokeAuthorizationCode.firstCall.args[0].should.equal(authorizationCode);
           model.revokeAuthorizationCode.firstCall.thisValue.should.equal(model);
         })
@@ -78,7 +78,7 @@ describe('AuthorizationCodeGrantType', function() {
       return handler.saveToken(user, client, 'foobar', 'foobiz')
         .then(function() {
           model.saveToken.callCount.should.equal(1);
-          model.saveToken.firstCall.args.should.have.length(3);
+          model.saveToken.firstCall.args.should.have.length(4);
           model.saveToken.firstCall.args[0].should.eql({ accessToken: 'foo', authorizationCode: 'foobar', accessTokenExpiresAt: 'biz', refreshToken: 'bar', refreshTokenExpiresAt: 'baz', scope: 'foobiz' });
           model.saveToken.firstCall.args[1].should.equal(client);
           model.saveToken.firstCall.args[2].should.equal(user);
