@@ -29,7 +29,7 @@ describe('RefreshTokenGrantType', function() {
       return handler.handle(request, client)
         .then(function() {
           model.revokeToken.callCount.should.equal(1);
-          model.revokeToken.firstCall.args.should.have.length(1);
+          model.revokeToken.firstCall.args.should.have.length(3);
           model.revokeToken.firstCall.args[0].should.equal(token);
           model.revokeToken.firstCall.thisValue.should.equal(model);
         })
@@ -51,7 +51,7 @@ describe('RefreshTokenGrantType', function() {
       return handler.getRefreshToken(request, client)
         .then(function() {
           model.getRefreshToken.callCount.should.equal(1);
-          model.getRefreshToken.firstCall.args.should.have.length(1);
+          model.getRefreshToken.firstCall.args.should.have.length(3);
           model.getRefreshToken.firstCall.args[0].should.equal('bar');
           model.getRefreshToken.firstCall.thisValue.should.equal(model);
         })
@@ -72,7 +72,7 @@ describe('RefreshTokenGrantType', function() {
       return handler.revokeToken(token)
         .then(function() {
           model.revokeToken.callCount.should.equal(1);
-          model.revokeToken.firstCall.args.should.have.length(1);
+          model.revokeToken.firstCall.args.should.have.length(2);
           model.revokeToken.firstCall.args[0].should.equal(token);
           model.revokeToken.firstCall.thisValue.should.equal(model);
         })
@@ -107,7 +107,7 @@ describe('RefreshTokenGrantType', function() {
       return handler.revokeToken(token)
         .then(function() {
           model.revokeToken.callCount.should.equal(1);
-          model.revokeToken.firstCall.args.should.have.length(1);
+          model.revokeToken.firstCall.args.should.have.length(2);
           model.revokeToken.firstCall.args[0].should.equal(token);
           model.revokeToken.firstCall.thisValue.should.equal(model);
         })
@@ -134,7 +134,7 @@ describe('RefreshTokenGrantType', function() {
       return handler.saveToken(user, client, 'foobar')
         .then(function() {
           model.saveToken.callCount.should.equal(1);
-          model.saveToken.firstCall.args.should.have.length(3);
+          model.saveToken.firstCall.args.should.have.length(4);
           model.saveToken.firstCall.args[0].should.eql({ accessToken: 'foo', accessTokenExpiresAt: 'biz', refreshToken: 'bar', refreshTokenExpiresAt: 'baz', scope: 'foobar' });
           model.saveToken.firstCall.args[1].should.equal(client);
           model.saveToken.firstCall.args[2].should.equal(user);
@@ -161,7 +161,7 @@ describe('RefreshTokenGrantType', function() {
       return handler.saveToken(user, client, 'foobar')
         .then(function() {
           model.saveToken.callCount.should.equal(1);
-          model.saveToken.firstCall.args.should.have.length(3);
+          model.saveToken.firstCall.args.should.have.length(4);
           model.saveToken.firstCall.args[0].should.eql({ accessToken: 'foo', accessTokenExpiresAt: 'biz', scope: 'foobar' });
           model.saveToken.firstCall.args[1].should.equal(client);
           model.saveToken.firstCall.args[2].should.equal(user);
@@ -188,7 +188,7 @@ describe('RefreshTokenGrantType', function() {
       return handler.saveToken(user, client, 'foobar')
         .then(function() {
           model.saveToken.callCount.should.equal(1);
-          model.saveToken.firstCall.args.should.have.length(3);
+          model.saveToken.firstCall.args.should.have.length(4);
           model.saveToken.firstCall.args[0].should.eql({ accessToken: 'foo', accessTokenExpiresAt: 'biz', refreshToken: 'bar', refreshTokenExpiresAt: 'baz', scope: 'foobar' });
           model.saveToken.firstCall.args[1].should.equal(client);
           model.saveToken.firstCall.args[2].should.equal(user);

@@ -48,7 +48,7 @@ describe('AuthorizeHandler', function() {
       return handler.getClient(request)
         .then(function() {
           model.getClient.callCount.should.equal(1);
-          model.getClient.firstCall.args.should.have.length(2);
+          model.getClient.firstCall.args.should.have.length(3);
           model.getClient.firstCall.args[0].should.equal(12345);
           model.getClient.firstCall.thisValue.should.equal(model);
         })
@@ -70,7 +70,7 @@ describe('AuthorizeHandler', function() {
       return handler.getUser(request, response)
         .then(function() {
           authenticateHandler.handle.callCount.should.equal(1);
-          authenticateHandler.handle.firstCall.args.should.have.length(2);
+          authenticateHandler.handle.firstCall.args.should.have.length(3);
           authenticateHandler.handle.firstCall.args[0].should.equal(request);
           authenticateHandler.handle.firstCall.args[1].should.equal(response);
         })
@@ -90,7 +90,7 @@ describe('AuthorizeHandler', function() {
       return handler.saveAuthorizationCode('foo', 'bar', 'qux', 'biz', 'baz', 'boz')
         .then(function() {
           model.saveAuthorizationCode.callCount.should.equal(1);
-          model.saveAuthorizationCode.firstCall.args.should.have.length(3);
+          model.saveAuthorizationCode.firstCall.args.should.have.length(4);
           model.saveAuthorizationCode.firstCall.args[0].should.eql({ authorizationCode: 'foo', expiresAt: 'bar', redirectUri: 'baz', scope: 'qux' });
           model.saveAuthorizationCode.firstCall.args[1].should.equal('biz');
           model.saveAuthorizationCode.firstCall.args[2].should.equal('boz');
@@ -116,12 +116,12 @@ describe('AuthorizeHandler', function() {
       return handler.getClient(request)
         .then(function() {
           model.getClient.callCount.should.equal(1);
-          model.getClient.firstCall.args.should.have.length(2);
+          model.getClient.firstCall.args.should.have.length(3);
           model.getClient.firstCall.args[0].should.equal(12345);
           model.getClient.firstCall.thisValue.should.equal(model);
 
           model.validateRedirectUri.callCount.should.equal(1);
-          model.validateRedirectUri.firstCall.args.should.have.length(2);
+          model.validateRedirectUri.firstCall.args.should.have.length(3);
           model.validateRedirectUri.firstCall.args[0].should.equal(redirect_uri);
           model.validateRedirectUri.firstCall.args[1].should.equal(client);
           model.validateRedirectUri.firstCall.thisValue.should.equal(model);
