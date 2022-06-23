@@ -121,7 +121,7 @@ describe('AuthorizeHandler', function() {
           model.getClient.firstCall.thisValue.should.equal(model);
 
           model.validateRedirectUri.callCount.should.equal(1);
-          model.validateRedirectUri.firstCall.args.should.have.length(2);
+          model.validateRedirectUri.firstCall.args.should.have.length(3);
           model.validateRedirectUri.firstCall.args[0].should.equal(redirect_uri);
           model.validateRedirectUri.firstCall.args[1].should.equal(client);
           model.validateRedirectUri.firstCall.thisValue.should.equal(model);
