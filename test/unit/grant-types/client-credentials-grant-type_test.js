@@ -24,8 +24,8 @@ describe('ClientCredentialsGrantType', function() {
 
       return handler.getUserFromClient(client)
         .then(function() {
-          model.getUserFromClient.callCount.should.equal(2);
-          model.getUserFromClient.firstCall.args.should.have.length(1);
+          model.getUserFromClient.callCount.should.equal(1);
+          model.getUserFromClient.firstCall.args.should.have.length(2);
           model.getUserFromClient.firstCall.args[0].should.equal(client);
           model.getUserFromClient.firstCall.thisValue.should.equal(model);
         })
